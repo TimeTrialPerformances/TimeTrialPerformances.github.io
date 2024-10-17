@@ -43,6 +43,7 @@ df_plantillas['edad'] = df_plantillas['nacimiento'].apply(calcula_edad)
 header_comparacion = ['Posicion','Corredor','Edad','Valoracion','Nº CRI','Victorias','Podiums','Top 10s','Pts UCI']
 
 app = Dash()
+server = app.server
 
 app.layout = dmc.Container([
     dmc.Title('Rendimiento en contrarrelojes', color="blue", size="h3",align='center'),
