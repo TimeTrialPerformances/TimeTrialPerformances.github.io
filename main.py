@@ -40,22 +40,22 @@ df_historicos = pd.read_csv(dwn_url,sep=';')
 
 df_plantillas['edad'] = df_plantillas['nacimiento'].apply(calcula_edad)
 
-header_comparacion = ['Posicion','Corredor','Edad','Valoracion','Nº CRI','Victorias','Podiums','Top 10s','Pts UCI']
+header_comparacion = ['Position','Rider','Age','Rating','# ITT','Wins','Podiums','Top 10s','UCI pts']
 
 app = Dash()
 server = app.server
 
 app.layout = dmc.Container([
-    dmc.Title('Rendimiento en contrarrelojes', color="blue", size="h3",align='center'),
+    dmc.Title('Individual Time Trial Performance', color="blue", size="h3",align='center'),
     dmc.RadioGroup([
         dmc.Select(
-            label='Seleccione un equipo del WT',
+            label='Select a WT team',
             id='Seleccion_equipo',
             value=sorted(df_plantillas['Equipo'].to_list())[0],
             data=[{'value': equipo, 'label': equipo} for equipo in sorted(df_plantillas['Equipo'].unique())]
         ),
         dmc.Select(
-            label='Seleccione un miembro del equipo',
+            label='Select a rider',
             id='Seleccion_corredor',
             data=[],
             value=None  # Añadimos esta línea para inicializar el dropdown en blanco
@@ -96,7 +96,7 @@ def update_indicator(equipo_seleccionado, corredor_seleccionado):
         mode = "number+delta",
         value = None,
         delta = None,
-        title = {'text': "Nº de contrarrelojes<br /> analizadas", 'font': {'size':12}},
+        title = {'text': "# of analyzed ITT", 'font': {'size':12}},
         ))
 
         fig.update_layout(
@@ -112,7 +112,7 @@ def update_indicator(equipo_seleccionado, corredor_seleccionado):
         mode = "number+delta",
         value = n_cronos,
         delta = {'reference': n_cronos_old, 'font': {'size':16}},
-        title = {'text': "Nº de contrarrelojes<br /> analizadas", 'font': {'size':12}},
+        title = {'text': "# of analyzed ITT", 'font': {'size':12}},
     ))
 
     fig.update_layout(
@@ -131,7 +131,7 @@ def update_indicator1(equipo_seleccionado, corredor_seleccionado):
         mode = "number+delta+gauge",
         delta = None,
         value = None,
-        title = {'text': "Valoración<br />general", 'font': {'size':14}},
+        title = {'text': "Overall<br />rating", 'font': {'size':14}},
         gauge={'axis': {'range': [None, 100], 'tickwidth': 1, 'tickcolor': "darkblue"}}
         ))
 
@@ -149,7 +149,7 @@ def update_indicator1(equipo_seleccionado, corredor_seleccionado):
     mode = "number+delta+gauge",
     delta = {'reference': rating_old},
     value = rating,
-    title = {'text': "Valoración<br />general", 'font': {'size':14}},
+    title = {'text': "Overall<br />rating", 'font': {'size':14}},
     gauge={'axis': {'range': [None, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},'bar': {'color': color}}
     ))
 
@@ -169,7 +169,7 @@ def update_indicator1(equipo_seleccionado, corredor_seleccionado):
         mode = "number+delta+gauge",
         delta = None,
         value = None,
-        title = {'text': "Porcentaje de<br />victorias", 'font': {'size':14}},
+        title = {'text': "Win percentage", 'font': {'size':14}},
         gauge={'axis': {'range': [None, 100], 'tickwidth': 1, 'tickcolor': "darkblue"}}
         ))
 
@@ -186,7 +186,7 @@ def update_indicator1(equipo_seleccionado, corredor_seleccionado):
     mode = "number+delta+gauge",
     delta = {'reference': rating_old},
     value = rating,
-    title = {'text': "Porcentaje de<br />victorias", 'font': {'size':14}},
+    title = {'text': "Win percentage", 'font': {'size':14}},
     gauge={'axis': {'range': [None, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},'bar': {'color': '#DAA520'}}
     ))
 
@@ -206,7 +206,7 @@ def update_indicator1(equipo_seleccionado, corredor_seleccionado):
         mode = "number+delta+gauge",
         delta = None,
         value = None,
-        title = {'text': "Porcentaje de<br />podiums", 'font': {'size':14}},
+        title = {'text': "Podium percentage", 'font': {'size':14}},
         gauge={'axis': {'range': [None, 100], 'tickwidth': 1, 'tickcolor': "darkblue"}}
         ))
 
@@ -223,7 +223,7 @@ def update_indicator1(equipo_seleccionado, corredor_seleccionado):
     mode = "number+delta+gauge",
     delta = {'reference': rating_old},
     value = rating,
-    title = {'text': "Porcentaje de<br />podiums", 'font': {'size':14}},
+    title = {'text': "Podium percentage", 'font': {'size':14}},
     gauge={'axis': {'range': [None, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},'bar': {'color': '#A9A9A9'}}
     ))
 
@@ -243,7 +243,7 @@ def update_indicator1(equipo_seleccionado, corredor_seleccionado):
         mode = "number+delta+gauge",
         delta = None,
         value = None,
-        title = {'text': "Porcentaje de<br />Top 10", 'font': {'size':14}},
+        title = {'text': "Top 10 percentage", 'font': {'size':14}},
         gauge={'axis': {'range': [None, 100], 'tickwidth': 1, 'tickcolor': "darkblue"}}
         ))
 
@@ -260,7 +260,7 @@ def update_indicator1(equipo_seleccionado, corredor_seleccionado):
     mode = "number+delta+gauge",
     delta = {'reference': rating_old},
     value = rating,
-    title = {'text': "Porcentaje de<br />Top 10", 'font': {'size':14}},
+    title = {'text': "Top 10 percentage", 'font': {'size':14}},
     gauge={'axis': {'range': [None, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},'bar': {'color': '#8b4513'}}
     ))
 
@@ -352,11 +352,11 @@ def update_indicator(equipo_seleccionado, corredor_seleccionado):
             margin=dict(l=0,r=0,b=0,t=0),
             )
         
-        fig.update_xaxes(title_text="Tiempo (min)", row=1, col=1)
-        fig.update_xaxes(title_text="Distancia (km)", row=1, col=2)
+        fig.update_xaxes(title_text="Time (min)", row=1, col=1)
+        fig.update_xaxes(title_text="Distance (km)", row=1, col=2)
 
-        fig.update_yaxes(title_text="Rendimiento", range=[0, 100], row=1, col=1)
-        fig.update_yaxes(title_text="Desnivel (m)", row=1, col=2)
+        fig.update_yaxes(title_text="Performance index", range=[0, 100], row=1, col=1)
+        fig.update_yaxes(title_text="Vertical ascent (m)", row=1, col=2)
 
         return fig
         
@@ -395,11 +395,11 @@ def update_indicator(equipo_seleccionado, corredor_seleccionado):
     showlegend=False
     )
 
-    fig.update_xaxes(title_text="Tiempo (min)", row=1, col=1)
-    fig.update_xaxes(title_text="Distancia (km)", row=1, col=2)
+    fig.update_xaxes(title_text="Time (min)", row=1, col=1)
+    fig.update_xaxes(title_text="Distance (km)", row=1, col=2)
 
-    fig.update_yaxes(title_text="Rendimiento", range=[0, 100], row=1, col=1)
-    fig.update_yaxes(title_text="Desnivel (m)", row=1, col=2)
+    fig.update_yaxes(title_text="Performance index", range=[0, 100], row=1, col=1)
+    fig.update_yaxes(title_text="Vertical ascent (m)", row=1, col=2)
 
     
     return fig
@@ -415,7 +415,7 @@ def update_indicator(equipo_seleccionado, corredor_seleccionado):
 
         fig.update_layout(
         margin=dict(l=0,r=0,b=0,t=0),
-        xaxis=dict(title='Distribución de puestos', zeroline=False),
+        xaxis=dict(title='Ranking distribution', zeroline=False),
         )
 
         return fig
@@ -433,7 +433,7 @@ def update_indicator(equipo_seleccionado, corredor_seleccionado):
 
     fig.update_layout(
     margin=dict(l=0,r=0,b=0,t=0),
-    xaxis=dict(title='Distribución de puestos', zeroline=False),
+    xaxis=dict(title='Ranking distribution', zeroline=False),
     )
     
     return fig
@@ -446,7 +446,7 @@ def update_indicator(equipo_seleccionado, corredor_seleccionado):
     if corredor_seleccionado is None:
         fig = go.Figure(data=go.Scatter(x=[]))
 
-        fig.update_yaxes(title_text="Valoración", range=[0, 100])
+        fig.update_yaxes(title_text="Overall rating", range=[0, 100])
 
         fig.update_layout(
         margin=dict(l=0,r=0,b=0,t=0),
@@ -511,7 +511,7 @@ def update_indicator(equipo_seleccionado, corredor_seleccionado):
                         name=corredores[4].title(),
                         line=dict(color='Violet')))
     
-    fig.update_yaxes(title_text="Valoración")
+    fig.update_yaxes(title_text="Overall rating")
 
     fig.update_layout(
     margin=dict(l=0,r=0,b=0,t=0),
@@ -525,7 +525,7 @@ Output('polar', 'figure'),
 )
 def update_indicator(equipo_seleccionado, corredor_seleccionado):
     if corredor_seleccionado is None:
-        fig = go.Figure(data=go.Scatterpolar(r=[0,0,0,0,0], theta=['Prologos','Cronoescaladas','Cronos de un día','Cronos de etapa > 9',"Cronos de más de 40'"], fill='toself'))
+        fig = go.Figure(data=go.Scatterpolar(r=[0,0,0,0,0], theta=['Prologues','Mountain TT','One day TT','TT that stage > 9',"TT longer than 40'"], fill='toself'))
         fig.update_layout(
         margin=dict(l=0,r=0,b=0,t=0),
         )
@@ -576,7 +576,7 @@ def update_indicator(equipo_seleccionado, corredor_seleccionado):
     color = df_plantillas[(df_plantillas['Equipo'] == equipo_seleccionado) & (df_plantillas['Corredor'] == corredor_seleccionado.lower())]['Color_gauge'].values[0]
 
     fig = go.Figure(data=go.Scatterpolar(r=[prologos,cronoescaladas,etapa_1,etapa_9,crono_larga], 
-                    theta=['Prologos','Cronoescaladas','Cronos de un día','Cronos de etapa > 9',"Cronos de más de 40'"], 
+                    theta=['Prologues','Mountain TT','One day TT','TT that stage > 9',"TT longer than 40'"], 
                     fill='toself', fillcolor=color,line_color=color,name=''))
 
     fig.update_polars(radialaxis=dict(range=[0, 100]))
