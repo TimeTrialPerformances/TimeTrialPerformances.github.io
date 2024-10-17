@@ -131,7 +131,7 @@ def update_indicator1(equipo_seleccionado, corredor_seleccionado):
         mode = "number+delta+gauge",
         delta = None,
         value = None,
-        title = {'text': "Overall<br />rating", 'font': {'size':14}},
+        title = {'text': "Overall rating", 'font': {'size':14}},
         gauge={'axis': {'range': [None, 100], 'tickwidth': 1, 'tickcolor': "darkblue"}}
         ))
 
@@ -149,7 +149,7 @@ def update_indicator1(equipo_seleccionado, corredor_seleccionado):
     mode = "number+delta+gauge",
     delta = {'reference': rating_old},
     value = rating,
-    title = {'text': "Overall<br />rating", 'font': {'size':14}},
+    title = {'text': "Overall rating", 'font': {'size':14}},
     gauge={'axis': {'range': [None, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},'bar': {'color': color}}
     ))
 
@@ -280,11 +280,11 @@ def update_indicator1(equipo_seleccionado, corredor_seleccionado):
         columnwidth = [80,300,80,100,80,100,100,100,100],
         header=dict(values=list(header_comparacion),
                     fill_color='paleturquoise',
-                    align='left',
+                    align='center',
                     height=23),
         cells=dict(values=[['-' for _ in range(5)] for _ in range(9)],
                 fill_color='lavender',
-                align='left',
+                align='center',
                 height=23))
     ])
         
@@ -314,7 +314,7 @@ def update_indicator1(equipo_seleccionado, corredor_seleccionado):
         columnwidth = [80,300,80,100,80,100,100,100,100],
         header=dict(values=list(header_comparacion),
                     fill_color='paleturquoise',
-                    align='left',
+                    align='center',
                     height=23),
         cells=dict(values=[df_tabla.Ranking, df_tabla.Corredor, df_tabla.edad,df_tabla.Rating_historico,
                             df_tabla.numero_cri, df_tabla.victorias, df_tabla.podiums,df_tabla.top10, df_tabla.uci],
