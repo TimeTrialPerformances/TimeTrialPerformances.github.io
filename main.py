@@ -43,6 +43,7 @@ df_plantillas['edad'] = df_plantillas['nacimiento'].apply(calcula_edad)
 header_comparacion = ['Position','Rider','Age','Rating','# ITT','Wins','Podiums','Top 10s','UCI pts']
 
 app = Dash()
+app.title = 'ITT Performance'
 server = app.server
 
 app.layout = dmc.Container([
