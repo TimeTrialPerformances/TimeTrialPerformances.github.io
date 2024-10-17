@@ -3,6 +3,6 @@ dash-mantine-components==0.12.1
 plotly
 dash
 datetime
-sklearn
+scikit-learn
 statistics
 gunicorn
