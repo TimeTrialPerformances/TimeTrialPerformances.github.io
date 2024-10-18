@@ -377,7 +377,7 @@ def update_indicator(equipo_seleccionado, corredor_seleccionado):
     fig = make_subplots(rows=1, cols=2)
     fig.add_trace(
     go.Scatter(x=lista_tiempos, y=lista_coeficientes, mode='markers',customdata = np.stack((lista_anios, lista_carreras, lista_etapas),axis=-1),
-                    hovertemplate= "Año: %{customdata[0]}<br>" + "Carrera: %{customdata[1]}<br>" + "Etapa: %{customdata[2]}<br>",name=""), 
+                    hovertemplate= "Year: %{customdata[0]}<br>" + "Race: %{customdata[1]}<br>" + "Stage: %{customdata[2]}<br>",name=""), 
     row=1, col=1
     )
 
@@ -387,7 +387,7 @@ def update_indicator(equipo_seleccionado, corredor_seleccionado):
 
     fig.add_trace(
         go.Scatter(x=lista_distancias, y=lista_desniveles, mode='markers', marker=dict(color=lista_colores),customdata = np.stack((lista_anios, lista_carreras, lista_etapas,lista_coeficientes),axis=-1),
-                    hovertemplate= "Año: %{customdata[0]}<br>" + "Carrera: %{customdata[1]}<br>" + "Etapa: %{customdata[2]}<br>" + "Valoración: %{customdata[3]}<br>",name=""),
+                    hovertemplate= "Year: %{customdata[0]}<br>" + "Race: %{customdata[1]}<br>" + "Stage: %{customdata[2]}<br>" + "Rating: %{customdata[3]}<br>",name=""),
         row=1, col=2
     )
 
@@ -430,7 +430,7 @@ def update_indicator(equipo_seleccionado, corredor_seleccionado):
     
 
     fig = go.Figure(go.Box(x = lista_coeficientes, boxmean=True,marker_color = color, name= '', boxpoints='all',customdata = np.stack((lista_coeficientes, lista_anios, lista_carreras, lista_etapas),axis=-1),
-                    hovertemplate= "Puesto: %{customdata[0]}<br>" + "Año: %{customdata[1]}<br>" + "Carrera: %{customdata[2]}<br>"+ "Etapa: %{customdata[3]}<br>"))
+                    hovertemplate= "Ranking: %{customdata[0]}<br>" + "Year: %{customdata[1]}<br>" + "Race: %{customdata[2]}<br>"+ "Stage: %{customdata[3]}<br>"))
 
     fig.update_layout(
     margin=dict(l=0,r=0,b=0,t=0),
