@@ -40,7 +40,7 @@ df_historicos = pd.read_csv(dwn_url,sep=';')
 
 df_plantillas['edad'] = df_plantillas['nacimiento'].apply(calcula_edad)
 
-header_comparacion = ['Position','Rider','Age','Rating','# ITT','Wins','Podiums','Top 10s','UCI pts']
+header_comparacion = ['Rank','Rider','Age','Rating','# ITT','Wins','Podiums','Top 10s','UCI pts']
 
 app = Dash()
 app.title = 'ITT Performance'
@@ -416,7 +416,7 @@ def update_indicator(equipo_seleccionado, corredor_seleccionado):
 
         fig.update_layout(
         margin=dict(l=0,r=0,b=0,t=0),
-        xaxis=dict(title='Ranking distribution', zeroline=False),
+        xaxis=dict(title='Rank distribution', zeroline=False),
         )
 
         return fig
@@ -430,11 +430,11 @@ def update_indicator(equipo_seleccionado, corredor_seleccionado):
     
 
     fig = go.Figure(go.Box(x = lista_coeficientes, boxmean=True,marker_color = color, name= '', boxpoints='all',customdata = np.stack((lista_coeficientes, lista_anios, lista_carreras, lista_etapas),axis=-1),
-                    hovertemplate= "Ranking: %{customdata[0]}<br>" + "Year: %{customdata[1]}<br>" + "Race: %{customdata[2]}<br>"+ "Stage: %{customdata[3]}<br>"))
+                    hovertemplate= "Rank: %{customdata[0]}<br>" + "Year: %{customdata[1]}<br>" + "Race: %{customdata[2]}<br>"+ "Stage: %{customdata[3]}<br>"))
 
     fig.update_layout(
     margin=dict(l=0,r=0,b=0,t=0),
-    xaxis=dict(title='Ranking distribution', zeroline=False),
+    xaxis=dict(title='Rank distribution', zeroline=False),
     )
     
     return fig
