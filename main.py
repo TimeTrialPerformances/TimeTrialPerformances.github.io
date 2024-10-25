@@ -27,15 +27,17 @@ def destaca_color(ranking,num,color):
 # df_plantillas = pd.read_sql('SELECT * FROM Plantillas',conexion)
 # df_historicos = pd.read_sql('SELECT * FROM Datos_dash',conexion)
 
-url='https://drive.google.com/file/d/1PjD1UZ9uxqqxh_yecrw4jmOg4CiW6axx/view?usp=sharing'
-file_id=url.split('/')[-2]
-dwn_url='https://drive.google.com/uc?id=' + file_id
-df_plantillas = pd.read_csv(dwn_url,sep=';')
+# url='https://drive.google.com/file/d/1PjD1UZ9uxqqxh_yecrw4jmOg4CiW6axx/view?usp=sharing'
+# file_id=url.split('/')[-2]
+# dwn_url='https://drive.google.com/uc?id=' + file_id
+# df_plantillas = pd.read_csv(dwn_url,sep=';')
+df_plantillas = pd.read_csv('Plantillas.csv', sep=';')
 
-url='https://drive.google.com/file/d/1GmOYm7uobiCecpMH7efNFaISz0bGsN7P/view?usp=sharing'
-file_id=url.split('/')[-2]
-dwn_url='https://drive.google.com/uc?id=' + file_id
-df_historicos = pd.read_csv(dwn_url,sep=';')
+# url='https://drive.google.com/file/d/1GmOYm7uobiCecpMH7efNFaISz0bGsN7P/view?usp=sharing'
+# file_id=url.split('/')[-2]
+# dwn_url='https://drive.google.com/uc?id=' + file_id
+# df_historicos = pd.read_csv(dwn_url,sep=';')
+df_plantillas = pd.read_csv('Datos_dash.csv', sep=';')
 
 
 df_plantillas['edad'] = df_plantillas['nacimiento'].apply(calcula_edad)
