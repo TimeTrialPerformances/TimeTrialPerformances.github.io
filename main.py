@@ -37,7 +37,7 @@ df_plantillas = pd.read_csv('Plantillas.csv', sep=';')
 # file_id=url.split('/')[-2]
 # dwn_url='https://drive.google.com/uc?id=' + file_id
 # df_historicos = pd.read_csv(dwn_url,sep=';')
-df_plantillas = pd.read_csv('Datos_dash.csv', sep=';')
+df_historicos = pd.read_csv('Datos_dash.csv', sep=';')
 
 
 df_plantillas['edad'] = df_plantillas['nacimiento'].apply(calcula_edad)
